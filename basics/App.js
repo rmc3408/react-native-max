@@ -1,17 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 
 export default function App() {
-  const [goal, setGoal] = useState('Mail');
+  const [goal, setGoal] = useState('');
+  const [listGoal, setListGoal] = useState([]);
+
+  const handleInputTxt = (value) => {
+    setGoal(value);
+  };
+
+  const handleInputList = () => {
+    setListGoal(curList => [...curList, goal]);
+  };
+
   return (
     <View style={styles.section}>
       <View style={styles.box}>
-        <TextInput placeholder='Course goal here' style={styles.ti} />
-        <Button title="Add" />
+        <TextInput placeholder='Course goal here' style={styles.ti} onChangeText={handleInputTxt} value={goal} />
+        <Button title="Add" onPress={handleInputList}/>
       </View>
       <View>
-
 
       </View>
       <StatusBar style="auto" />
