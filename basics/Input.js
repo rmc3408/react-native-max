@@ -9,7 +9,7 @@ function Input(props) {
     };
 
     const addInputHandler = () => {
-        props.handleInputList(goal)
+        props.handleInputList(goal);
         setGoal('');
     };
 
@@ -19,22 +19,32 @@ function Input(props) {
     };
 
     return (
-        <Modal visible={props.visibleB} animationType='slide'>
+        <Modal visible={props.visibleB} animationType="slide">
             <View style={styles.box}>
-                <TextInput placeholder='Course goal here' style={styles.ti} onChangeText={handleInputTxt} value={goal} />
+                <TextInput
+                    placeholder="Course goal here"
+                    style={styles.ti}
+                    onChangeText={handleInputTxt}
+                    value={goal}
+                />
                 <View style={styles.btns}>
-                    <View style={styles.btn}><Button title="Add" onPress={addInputHandler} /></View>
-                    <View style={styles.btn}><Button title="Cancel" color='red' onPress={cancelInputHandler} /></View>
+                    <View style={styles.btn}>
+                        <Button title="Add" onPress={addInputHandler} />
+                    </View>
+                    <View style={styles.btn}>
+                        <Button title="Cancel" color="red" onPress={cancelInputHandler} />
+                    </View>
                 </View>
             </View>
-        </Modal>);
+        </Modal>
+    );
 }
 
 const styles = StyleSheet.create({
     box: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     ti: {
         width: '80%',
@@ -50,6 +60,6 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: '40%',
-    }
-})
+    },
+});
 export default Input;
