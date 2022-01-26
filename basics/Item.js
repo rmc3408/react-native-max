@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 function Item(props) {
-    return <View style={styles.gbox}><Text>{props.title}</Text></View>;
+    return <TouchableOpacity onPress={props.onDelete}><View style={styles.gbox}><Text>{props.title}</Text></View></TouchableOpacity>;
 }
 
 const styles = StyleSheet.create({
