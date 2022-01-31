@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   headerTitle: {
       color: color.black,
       fontSize: 18,
+      fontFamily: 'osans-b',
   }
 });
 

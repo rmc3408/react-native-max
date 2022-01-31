@@ -1,5 +1,5 @@
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 
@@ -19,6 +19,7 @@ function generateNum(min, max, exc) {
 
 const Run = (props) => {
     const [curGuess, setCurGuess] = useState(generateNum(GAME_MIN, GAME_MAX, props.userChoice));
+    const [rounds, setRounds ] = useState(0);
     let currentLow = useRef(GAME_MIN);
     let currentHigh = useRef(GAME_MAX);
 
@@ -27,14 +28,22 @@ const Run = (props) => {
             Alert.alert('Dont Lie, B', 'you know is wrong', [{ text: 'Sorry', style: 'cancel' }]);
             return;
         }
-        if ( direction === 'L') {
+        if (direction === 'L') {
             currentHigh.current = curGuess;
         } else {
             currentLow.current = curGuess;
         }
         const nextNum = generateNum(currentLow.current, currentHigh.current, curGuess);
         setCurGuess(nextNum);
+        setRounds(curSt => curSt + 1);
     };
+
+    const { onOver } = props;
+    useEffect(() => {
+        if (curGuess === props.userChoice) {
+            onOver(rounds);
+        }
+    }, [curGuess, onOver]);
 
     return (
         <View style={styles.screen}>

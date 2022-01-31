@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         marginVertical: 20,
+        fontFamily: 'osans-b',
     },
     cardContainer: {
         alignItems: 'center',
