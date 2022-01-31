@@ -4,6 +4,7 @@ import Card from '../components/Card.js';
 import Input from '../components/Input';
 import color from '../constant/color';
 import NumberContainer from '../components/NumberContainer.js';
+import StyledButton from '../styles/Button';
 
 const Start = (props) => {
     const [isConfirmed, setIsConfirmed] = useState(false);
@@ -11,13 +12,16 @@ const Start = (props) => {
     const [num, setNum] = useState();
 
     const handleOutsideKeyboard = () => Keyboard.dismiss();
+
     const handleNoDecimalsValidation = (value) => {
         setEnteredNum(value.replace(/[^0-9]/, ''));
     };
+
     const resetNumber = () => {
         setIsConfirmed(false);
         setEnteredNum('');
     };
+
     const startNumber = () => {
         const choosen = parseInt(enteredNum);
         if (choosen <= 0 || isNaN(choosen)) {
@@ -58,7 +62,7 @@ const Start = (props) => {
                     <Card cardStyle={styles.summaryContainer}>
                         <Text style={{ alignSelf: 'center'}}>You selected</Text>
                         <NumberContainer>{num}</NumberContainer>
-                        <Button title='START GAME' onPress={() => props.run(num)} />
+                        <StyledButton onPress={() => props.run(num)}>START GAME</StyledButton>
                     </Card>
                 )}
             </View>

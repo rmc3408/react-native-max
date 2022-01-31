@@ -1,7 +1,12 @@
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import React, { useState, useRef, useEffect } from 'react';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
+import { Ionicons } from '@expo/vector-icons';
+
+import defStyles from '../constant/def-styles';
+import { TitleText1, TitleText2 } from '../styles/Text';
+import StyledButton from '../styles/Button';
 
 const GAME_MIN = 1;
 const GAME_MAX = 100;
@@ -19,7 +24,7 @@ function generateNum(min, max, exc) {
 
 const Run = (props) => {
     const [curGuess, setCurGuess] = useState(generateNum(GAME_MIN, GAME_MAX, props.userChoice));
-    const [rounds, setRounds ] = useState(0);
+    const [rounds, setRounds] = useState(0);
     let currentLow = useRef(GAME_MIN);
     let currentHigh = useRef(GAME_MAX);
 
@@ -35,7 +40,7 @@ const Run = (props) => {
         }
         const nextNum = generateNum(currentLow.current, currentHigh.current, curGuess);
         setCurGuess(nextNum);
-        setRounds(curSt => curSt + 1);
+        setRounds((curSt) => curSt + 1);
     };
 
     const { onOver } = props;
@@ -47,11 +52,18 @@ const Run = (props) => {
 
     return (
         <View style={styles.screen}>
-            <Text>Opponent's Guess</Text>
+            <Text style={styles.title}>Opponent's Guess</Text>
+            <Text style={defStyles.title}>Global style</Text>
+            <TitleText1>Custom styled component</TitleText1>
+            <TitleText2 style={styles.bold}>Custom+ styled component</TitleText2>
             <NumberContainer>{curGuess}</NumberContainer>
             <Card cardStyle={styles.cardChoice}>
-                <Button title="LOWER" onPress={hintGuess.bind(this, 'L')} />
-                <Button title="GREATER" onPress={hintGuess.bind(this, 'H')} />
+                <StyledButton onPress={hintGuess.bind(this, 'L')}>
+                    <Ionicons name="md-remove" size={24} color="white" />
+                </StyledButton>
+                <StyledButton onPress={hintGuess.bind(this, 'H')}>
+                    <Ionicons name="md-add" size={24} color="white" />
+                </StyledButton>
             </Card>
         </View>
     );
@@ -71,5 +83,12 @@ const styles = StyleSheet.create({
         width: 300,
         maxWidth: '80%',
         justifyContent: 'space-around',
+    },
+    bold: {
+        fontFamily: 'osans-b',
+    },
+    title: {
+        fontSize: 22,
+        color: 'black',
     },
 });
