@@ -18,12 +18,14 @@ import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/colors';
+//import ScreenOrientation from 'expo';
 
 const StartGameScreen = (props) => {
     const [enteredValue, setEnteredValue] = useState('');
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState();
     const [btnDimension, setBtnDimension] = useState(Dimensions.get('window').width / 4);
+    //ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
     useEffect(() => {
         const updateDimension = () => {
@@ -31,7 +33,7 @@ const StartGameScreen = (props) => {
         };
         Dimensions.addEventListener('change', updateDimension);
         return () => { 
-          Dimensions.addEventListener('remove', updateDimension);
+          Dimensions.removeEventListener('change', updateDimension);
         }
     }, []);
 
