@@ -4,6 +4,5 @@ export default class Category {
         this.title = title,
         this.color = color
     }
-    
 };
 

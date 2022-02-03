@@ -8,7 +8,7 @@ const Categories = (props) => {
     const itemList = ({ item }) => <Item title={item.title} color={item.color} id={item.id} />;
 
     const Item = ({ id, title, color }) => (
-        <TouchableOpacity onPress={directCategory.bind(this, id)} style={{ ...styles.item, backgroundColor: color }}>
+        <TouchableOpacity onPress={directCategory.bind(this, id)} style={{ ...styles.grid, backgroundColor: color }}>
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     );
@@ -19,8 +19,8 @@ const Categories = (props) => {
 
     return (
         <View style={defStyles.container}>
-            <Text style={defStyles.title}>CATEGORIES</Text>
-            {/* <Button title='Go to category' onPress={()=> props.navigation.navigate('Category')} /> */}
+            {/* <Text style={defStyles.title}>CATEGORIES</Text>
+             <Button title='Go to category' onPress={()=> props.navigation.navigate('Category')} /> */}
             <FlatList data={dummy} numColumns={2} renderItem={itemList} keyExtractor={(item) => item.id} />
         </View>
     );
@@ -29,14 +29,26 @@ const Categories = (props) => {
 export default Categories;
 
 const styles = StyleSheet.create({
-    item: {
+    grid: {
         flex: 1,
-        padding: 15,
+        margin: 15, 
+        padding: 10,
         height: 150,
-        alignItems: 'center',
-        justifyContent: 'center',
+        borderRadius: 7,
+        elevation: 3,
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 6 },
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+    },
+    container: {
+
     },
     title: {
-        fontSize: 16,
+        fontSize: 20,
+        fontFamily: 'openSansB',
+        textAlign: 'right',
     },
 });
