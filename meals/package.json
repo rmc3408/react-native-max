@@ -26,5 +26,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
+  "resolutions": {
+    "react-devtools-core": "4.21.0"
+  },
   "private": true
 }
