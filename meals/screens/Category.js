@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import defStyles from '../defStyles';
 
-const Category = () => {
+
+const Category = (props) => {
   return (
-    <View>
-      <Text>CATEGORY</Text>
+    <View style={defStyles.container}>
+      <Text style={defStyles.title}>CATEGORY</Text>
+      <Button title='Go to meals details' onPress={()=> props.navigation.navigate('Details')} />
     </View>
   );
 };
