@@ -9,7 +9,18 @@ const { Navigator, Screen } = createNativeStackNavigator();
 
 const MealNavigator = () => {
     return (
-        <Navigator initialRouteName="Categories">
+        <Navigator
+            initialRouteName="Categories"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#f4511e',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
+            }}
+        >
             <Screen
                 name="Categories"
                 component={Categories}
@@ -18,7 +29,7 @@ const MealNavigator = () => {
                     headerStyle: {
                         backgroundColor: Platform.OS === 'android' ? Colors.primary : '#f4511e',
                     },
-                    headerTintColor: '#fff'
+                    headerTintColor: '#fff',
                 }}
             />
             <Screen name="Category" component={Category} />

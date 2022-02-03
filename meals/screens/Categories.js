@@ -4,15 +4,18 @@ import defStyles from '../defStyles';
 import { dummy } from '../data/dummy-data';
 
 const Categories = (props) => {
-    function directCategory() {
-        props.navigation.navigate('Category');
-    }
-    const itemList = ({ item }) => <Item title={item.title} color={item.color} />;
-    const Item = ({ title, color }) => (
-        <TouchableOpacity onPress={directCategory} style={{ ...styles.item, backgroundColor: color }}>
+    
+    const itemList = ({ item }) => <Item title={item.title} color={item.color} id={item.id} />;
+
+    const Item = ({ id, title, color }) => (
+        <TouchableOpacity onPress={directCategory.bind(this, id)} style={{ ...styles.item, backgroundColor: color }}>
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     );
+    function directCategory(TheID) {
+        //console.log(TheID);
+        props.navigation.navigate('Category', { categoryId: TheID});
+    }
 
     return (
         <View style={defStyles.container}>
