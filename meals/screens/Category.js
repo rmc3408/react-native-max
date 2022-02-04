@@ -18,8 +18,10 @@ const Category = (props) => {
         return <Item {...item} />;
     };
 
-    const Item = (props) => {
-        return <MealItem {...props} onSelectedMeal={() => {}} />
+    const Item = (details) => {
+        return <MealItem {...details} onSelectedMeal={() => {
+            props.navigation.navigate('Details', { ...details });
+        }} />
     };
 
     return (

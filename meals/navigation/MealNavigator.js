@@ -1,15 +1,16 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Platform } from 'react-native';
 import Colors from '../Colors';
+import HeaderBtn from '../components/HeaderBtn';
 import Categories from '../screens/Categories';
 import Category from '../screens/Category';
 import Details from '../screens/Details';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const MealNavigator = () => {
     return (
-        <Navigator
+        <Stack.Navigator
             initialRouteName="Categories"
             screenOptions={{
                 headerStyle: {
@@ -21,7 +22,7 @@ const MealNavigator = () => {
                 },
             }}
         >
-            <Screen
+            <Stack.Screen
                 name="Categories"
                 component={Categories}
                 options={{
@@ -32,9 +33,15 @@ const MealNavigator = () => {
                     headerTintColor: '#fff',
                 }}
             />
-            <Screen name="Category" component={Category} />
-            <Screen name="Details" component={Details} />
-        </Navigator>
+            <Stack.Screen name="Category" component={Category} />
+            <Stack.Screen
+                name="Details"
+                component={Details}
+                options={{
+                    headerRight: () => <HeaderBtn />,
+                }}
+            />
+        </Stack.Navigator>
     );
 };
 

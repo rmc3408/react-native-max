@@ -9,12 +9,12 @@ const Categories = (props) => {
 
     const Item = ({ id, title, color }) => (
         <TouchableOpacity onPress={directCategory.bind(this, id)} style={{ ...styles.grid, backgroundColor: color }}>
-            <Text style={styles.title}>{title}</Text>
+            <View style={styles.container}><Text style={styles.title}>{title}</Text></View>
         </TouchableOpacity>
     );
     function directCategory(TheID) {
         //console.log(TheID);
-        props.navigation.navigate('Category', { categoryId: TheID});
+        props.navigation.navigate('Category', { categoryId: TheID });
     }
 
     return (
@@ -34,17 +34,16 @@ const styles = StyleSheet.create({
         margin: 15, 
         padding: 10,
         height: 150,
-        borderRadius: 7,
-        elevation: 3,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowRadius: 10,
-        shadowOffset: { width: 0, height: 6 },
+        borderRadius: 5,
+        elevation: 5,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
     },
     container: {
-
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 4 },
     },
     title: {
         fontSize: 20,

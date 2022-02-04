@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './navigation/TabNavigator';
 import MealNavigator from './navigation/MealNavigator';
 
 export default function App() {
@@ -16,9 +17,11 @@ export default function App() {
     }
 
     return (
+        <>
+        <StatusBar style="auto" />
         <NavigationContainer>
-            <MealNavigator />
-            <StatusBar style="auto" />
+            <TabNavigator />
         </NavigationContainer>
+        </>
     );
 }
