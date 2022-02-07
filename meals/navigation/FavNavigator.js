@@ -5,37 +5,37 @@ import HeaderBtn from '../components/HeaderBtn';
 import Categories from '../screens/Categories';
 import Category from '../screens/Category';
 import Details from '../screens/Details';
+import Favorites from '../screens/Favorites';
 
 const Stack = createNativeStackNavigator();
 
-const MealNavigator = () => {
+const FavNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Categories"
+            initialRouteName="Favorites"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: '#f4511e',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
-                    fontFamily: 'openSansB'
+                    fontWeight: 'bold',
                 },
             }}
         >
             <Stack.Screen
-                name="Categories"
-                component={Categories}
+                name="Favorite"
+                component={Favorites}
                 options={{
-                    title: 'Meals Categories',
+                    title: 'Your Favorite Meals',
                     headerStyle: {
                         backgroundColor: Platform.OS === 'android' ? Colors.primary : '#f4511e',
                     },
                     headerTintColor: '#fff',
                 }}
             />
-            <Stack.Screen name="Category" component={Category} />
             <Stack.Screen
-                name="Details"
+                name="Very Detailed"
                 component={Details}
                 options={{
                     headerRight: () => <HeaderBtn />,
@@ -45,4 +45,4 @@ const MealNavigator = () => {
     );
 };
 
-export default MealNavigator;
+export default FavNavigator;

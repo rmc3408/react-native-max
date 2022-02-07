@@ -10,4 +10,9 @@ export default {
         fontFamily: 'lastCall',
         fontSize: 28,
     },
+    text: {
+        fontFamily: 'openSans',
+        fontSize: 16,
+
+    },
 };

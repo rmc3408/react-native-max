@@ -2,8 +2,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigator from './navigation/TabNavigator';
-import MealNavigator from './navigation/MealNavigator';
+import { DrawerNavigator } from './navigation/DrawerNavigator';
+import 'react-native-gesture-handler';
 
 export default function App() {
     const [loading] = useFonts({
@@ -20,7 +20,7 @@ export default function App() {
         <>
         <StatusBar style="auto" />
         <NavigationContainer>
-            <TabNavigator />
+            <DrawerNavigator />
         </NavigationContainer>
         </>
     );

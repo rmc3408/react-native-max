@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 import React from 'react';
+import defStyles from '../defStyles';
 
 const MealItem = (props) => {
     return (
@@ -12,9 +13,9 @@ const MealItem = (props) => {
                         </ImageBackground>
                     </View>
                     <View style={{ ...styles.mealrow, ...styles.mealDetail }}>
-                        <Text>{props.duration}</Text>
-                        <Text>{props.complexibility.toUpperCase()}</Text>
-                        <Text>{props.affordability.toUpperCase()}</Text>
+                        <Text style={defStyles.text}>{props.duration}</Text>
+                        <Text style={defStyles.text}>{props.complexibility.toUpperCase()}</Text>
+                        <Text style={defStyles.text}>{props.affordability.toUpperCase()}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#f5f5f5',
         borderRadius: 10,
+        marginVertical: 8,
         overflow: 'hidden',
     },
     image: {

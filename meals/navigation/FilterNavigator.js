@@ -8,34 +8,34 @@ import Details from '../screens/Details';
 
 const Stack = createNativeStackNavigator();
 
-const MealNavigator = () => {
+const FavNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Categories"
+            initialRouteName="CategoriesFiltered"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: '#f4511e',
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
-                    fontFamily: 'openSansB'
+                    fontWeight: 'bold',
                 },
             }}
         >
             <Stack.Screen
-                name="Categories"
+                name="CategoriesFiltered"
                 component={Categories}
                 options={{
-                    title: 'Meals Categories',
+                    title: 'Your Selected Categories',
                     headerStyle: {
                         backgroundColor: Platform.OS === 'android' ? Colors.primary : '#f4511e',
                     },
                     headerTintColor: '#fff',
                 }}
             />
-            <Stack.Screen name="Category" component={Category} />
+            <Stack.Screen name="CategoryFiltered" component={Category} />
             <Stack.Screen
-                name="Details"
+                name="FilteredDetails"
                 component={Details}
                 options={{
                     headerRight: () => <HeaderBtn />,
@@ -45,4 +45,4 @@ const MealNavigator = () => {
     );
 };
 
-export default MealNavigator;
+export default FavNavigator;

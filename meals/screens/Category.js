@@ -2,7 +2,7 @@ import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import defStyles from '../defStyles';
 import { dummy, dummyMeal } from '../data/dummy-data';
-import MealItem from '../components/MealItem';
+import MealList from '../components/MealList';
 
 const Category = (props) => {
     const { categoryId } = props.route.params;
@@ -14,21 +14,11 @@ const Category = (props) => {
         props.navigation.setOptions({ title: selectedCat.title });
     }, []);
 
-    const renderedMeal = ({ item }) => {
-        return <Item {...item} />;
-    };
-
-    const Item = (details) => {
-        return <MealItem {...details} onSelectedMeal={() => {
-            props.navigation.navigate('Details', { ...details });
-        }} />
-    };
-
     return (
         <View style={defStyles.container}>
             {/* <Text style={defStyles.title}>{selectedCat.title}</Text>
-      <Button title='Go to meals details' onPress={()=> props.navigation.navigate('Details')} /> */}
-            <FlatList data={displayedMeals} keyExtractor={(item) => item.id} renderItem={renderedMeal} />
+                <Button title='Go to meals details' onPress={()=> props.navigation.navigate('Details')} /> */}
+            <MealList listData={displayedMeals} navigation={props.navigation} />
         </View>
     );
 };
