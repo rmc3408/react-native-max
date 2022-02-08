@@ -4,6 +4,8 @@ import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { DrawerNavigator } from './navigation/DrawerNavigator';
 import 'react-native-gesture-handler';
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 export default function App() {
     const [loading] = useFonts({
@@ -17,11 +19,11 @@ export default function App() {
     }
 
     return (
-        <>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-            <DrawerNavigator />
-        </NavigationContainer>
-        </>
+        <Provider store={store}>
+            <StatusBar style="auto" />
+            <NavigationContainer>
+                <DrawerNavigator />
+            </NavigationContainer>
+        </Provider>
     );
 }

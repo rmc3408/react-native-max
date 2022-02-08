@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import defStyles from '../defStyles';
 
@@ -21,13 +21,6 @@ const Details = (props) => {
             {data.ingredients.map((ing)=> <Text key={ing}>- {ing}</Text> )}
             <Text style={styles.titles}>Steps</Text>
             {data.steps.map((ing)=> <Text key={ing}>-> {ing}</Text> )}
-            
-            {/* <View style={defStyles.container}>
-                <Text style={defStyles.title}>{data.title}</Text>
-                <Button title="Go AGAIN to details" onPress={() => props.navigation.push('Details')} />
-                <Button title="Go back" onPress={() => props.navigation.goBack()} />
-                <Button title="Go to Categories" onPress={() => props.navigation.popToTop()} />
-            </View> */}
         </ScrollView>
     );
 };

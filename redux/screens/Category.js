@@ -1,14 +1,17 @@
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import defStyles from '../defStyles';
-import { dummy, dummyMeal } from '../data/dummy-data';
 import MealList from '../components/MealList';
+import { useSelector } from 'react-redux';
+import { dummy } from '../data/dummy-data'
+
 
 const Category = (props) => {
     const { categoryId } = props.route.params;
+    const avaliable = useSelector((state) => state.filteredMeals.value);
     const selectedCat = dummy.find((item) => item.id === categoryId);
 
-    const displayedMeals = dummyMeal.filter((meal) => meal.categoryIds.includes(categoryId));
+    const displayedMeals = avaliable.filter((meal) => meal.categoryIds.includes(categoryId));
 
     useLayoutEffect(() => {
         props.navigation.setOptions({ title: selectedCat.title });

@@ -3,8 +3,6 @@ export default {
         padding: 8,
         flex: 1,
         backgroundColor: 'white',
-        //alignItems: 'center',
-        //justifyContent: 'center',
     },
     title: {
         fontFamily: 'lastCall',
@@ -13,6 +11,10 @@ export default {
     text: {
         fontFamily: 'openSans',
         fontSize: 16,
-
     },
+    empty: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 };

@@ -1,15 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import React from 'react';
 import MealList from '../components/MealList';
-import { dummyMeal } from '../data/dummy-data';
 import defStyles from '../defStyles';
+import { useSelector } from 'react-redux'
 
 const Favorites = (props) => {
-  const selectedFav = dummyMeal.filter(m => m.id === 'm1' ||  m.id === 'm2');
+  const favorites = useSelector((state) => state.favMeals.value);
+
+  if (favorites.length === 0) {
+    return (
+      <View style={defStyles.empty}>
+        <Text style={defStyles.text}>NO FAVORITES</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={defStyles.container}>
-      <MealList listData={selectedFav} navigation={props.navigation} />
+      <MealList listData={favorites} navigation={props.navigation} />
     </View>
   );
 };

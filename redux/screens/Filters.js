@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Switch } from 'react-native-paper';
 import { SafeAreaView } from 'react-native';
 import Colors from '../Colors';
+import { useSelector } from 'react-redux';
+
 
 const Filters = (props) => {
     const [gluten, setGluten] = useState(false);
