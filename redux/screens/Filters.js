@@ -3,7 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Switch } from 'react-native-paper';
 import { SafeAreaView } from 'react-native';
 import Colors from '../Colors';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../store/reducer/filtered';
 
 
 const Filters = (props) => {
@@ -11,6 +12,7 @@ const Filters = (props) => {
     const [lactose, setLactose] = useState(false);
     const [vegan, setVegan] = useState(false);
     const [veggie, setVeggie] = useState(false);
+    const dispatch = useDispatch();
 
     const saveFilters = useCallback(() => {
         const choices = {
@@ -19,8 +21,9 @@ const Filters = (props) => {
             vegan,
             veggie,
         };
-        console.log(choices);
-    }, [gluten, lactose, vegan, veggie]);
+        //console.log(choices);
+        dispatch(setFilter(choices));
+    }, [gluten, lactose, vegan, veggie, dispatch]);
 
     const { navigation } = props;
     useEffect(() => {
