@@ -11,13 +11,15 @@ import FavNavigator from './FavNavigator';
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+
+
     return (
         <Tab.Navigator
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: Colors.secondary,
                 tabBarLabelStyle: {
-                    fontFamily: 'openSansB'
+                    fontFamily: 'openSansB',
                 },
             }}
         >
@@ -29,7 +31,9 @@ const TabNavigator = () => {
             <Tab.Screen
                 name="Favorites!"
                 component={FavNavigator}
-                options={{ tabBarIcon: (icon) => <Ionicons name="ios-star" size={25} color={icon.color} /> }}
+                options={{
+                    tabBarIcon: (icon) => <Ionicons name="ios-star" size={25} color={icon.color} />,
+                }}
             />
         </Tab.Navigator>
     );

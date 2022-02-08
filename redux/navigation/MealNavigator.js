@@ -37,9 +37,9 @@ const MealNavigator = () => {
             <Stack.Screen
                 name="Details"
                 component={Details}
-                options={{
-                    headerRight: () => <HeaderBtn />,
-                }}
+                options={({ route }) => ({
+                    headerRight: () => <HeaderBtn id={route.params.id} />,
+                })}
             />
         </Stack.Navigator>
     );
