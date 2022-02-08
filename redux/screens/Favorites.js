@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 const Favorites = (props) => {
   const favorites = useSelector((state) => state.favMeals.value);
 
-  if (favorites.length === 0) {
+  if (favorites.length === 0 || !favorites) {
     return (
       <View style={defStyles.empty}>
         <Text style={defStyles.text}>NO FAVORITES</Text>
