@@ -1,7 +1,7 @@
 import React, { useId, useState } from 'react';
-import { StyleSheet, TextInput, Button, View, Modal } from 'react-native';
+import { StyleSheet, TextInput, Button, View, Modal, Image } from 'react-native';
 
-function Input(props) {
+function GoalInput(props) {
     const clientId = useId();
     const [goal, setGoal] = useState('');
 
@@ -22,6 +22,7 @@ function Input(props) {
     return (
         <Modal visible={props.visibleB} animationType="slide">
             <View style={styles.box}>
+                <Image source={require('./assets/goal.png')} style={styles.image}/>
                 <TextInput
                     placeholder="Course goal here"
                     style={styles.ti}
@@ -30,10 +31,10 @@ function Input(props) {
                 />
                 <View style={styles.btns}>
                     <View style={styles.btn}>
-                        <Button title="Add" onPress={addInputHandler} />
+                        <Button title="Add" color='#5c0ecc' onPress={addInputHandler} />
                     </View>
                     <View style={styles.btn}>
-                        <Button title="Cancel" color="red" onPress={cancelInputHandler} />
+                        <Button title="Cancel" color="pink" onPress={cancelInputHandler} />
                     </View>
                 </View>
             </View>
@@ -50,17 +51,24 @@ const styles = StyleSheet.create({
     ti: {
         width: '80%',
         borderBottomWidth: 1,
-        borderBottomColor: 'black',
+        borderBottomColor: '#5e0acc',
         padding: 10,
         marginBottom: 10,
     },
     btns: {
         flexDirection: 'row',
-        width: '50%',
+        width: '60%',
         justifyContent: 'space-around',
     },
     btn: {
         width: '40%',
     },
+    image: {
+        width: 100,
+        height: 100,
+        marginBottom: 60,
+        backgroundColor: 'grey'
+
+    }
 });
-export default Input;
+export default GoalInput;
