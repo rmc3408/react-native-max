@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { StyleSheet, TextInput, Button, View, Modal } from 'react-native';
 
 function Input(props) {
+    const clientId = useId();
     const [goal, setGoal] = useState('');
 
     const handleInputTxt = (value) => {
@@ -9,7 +10,7 @@ function Input(props) {
     };
 
     const addInputHandler = () => {
-        props.handleInputList(goal);
+        props.handleInputList({ id: 'input-' + clientId + Math.random().toPrecision(2), title: goal });
         setGoal('');
     };
 
