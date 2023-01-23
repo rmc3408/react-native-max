@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { ThemeProvider, createTheme } from '@rneui/themed';
 import Start from './screens/start';
 
@@ -13,8 +14,8 @@ const theme = createTheme({
   components: {
     Button: {
       titleStyle: {
-        color: '#363737'
-      }
+        color: '#363737',
+      },
     },
     Input: {
       inputContainerStyle: {
@@ -24,25 +25,32 @@ const theme = createTheme({
         color: '#ffffaa',
       },
       placeholderTextColor: '#ffffaa',
-    }
-  }
+    },
+  },
 });
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaProvider style={styles.container}>
-        <StatusBar style="auto" />
+      <LinearGradient colors={[ '#4e0329', '#ddb52a']} style={styles.rootScreen}>
+        <SafeAreaProvider>
+          <StatusBar style="auto" />
 
-        <Start />
-      </SafeAreaProvider>
+          <ImageBackground
+            source={require('./assets/images/bg.png')}
+            resizeMode="cover"
+            style={[styles.rootScreen]}
+            imageStyle={styles.imageTrans}
+          >
+            <Start />
+          </ImageBackground>
+        </SafeAreaProvider>
+      </LinearGradient>
     </ThemeProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-    paddingHorizontal: 16,
-  },
+  rootScreen: { flex: 1 },
+  imageTrans: { opacity: 0.25 }
 });
