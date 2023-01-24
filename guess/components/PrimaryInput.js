@@ -1,5 +1,4 @@
 import { Input, useTheme } from '@rneui/themed';
-import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 const PrimaryInput = (props) => {
@@ -7,7 +6,6 @@ const PrimaryInput = (props) => {
 
   return (
     <Input
-      placeholder="??"
       inputContainerStyle={styles.inputContainer}
       inputStyle={styles.inputData}
       maxLength={2}
@@ -23,9 +21,10 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: 54,
     alignSelf: 'center',
+    marginTop: 42,
   },
   inputData: {
-    fontSize: 54,
+    fontSize: 42,
     fontWeight: '700',
     textAlign: 'center',
   },

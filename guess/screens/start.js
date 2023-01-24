@@ -1,8 +1,18 @@
-import { Alert, View } from 'react-native';
+import { Alert, View, Text } from 'react-native';
 import { makeStyles } from '@rneui/themed';
 import PrimaryButton from '../components/PrimaryBtn';
 import PrimaryInput from '../components/PrimaryInput';
 import { useState } from 'react';
+import Title from '../components/Title';
+import Card from '../components/Card';
+
+function validateUserChoice(value) {
+  const chosen = parseInt(value);
+  if (isNaN(chosen) || chosen <= 0 || chosen > 99) {
+    return false;
+  }
+  return true;
+}
 
 const Start = (props) => {
   const styles = usePreDefinedStyle(props);
@@ -11,59 +21,50 @@ const Start = (props) => {
   function onTyping(value) {
     setPlayerInput(value);
   }
-  
+
   function resetHandler() {
-    setPlayerInput('')
+    setPlayerInput('');
   }
 
   function onConfirming() {
-    const chosen = parseInt(playerInput);
-
-    if (isNaN(chosen) || chosen <= 0 || chosen > 99) {
-      Alert.alert('Invalid Number', "must be number between 1 to 99",
-      [{ text: 'Okie', style:'destructive', onPress: resetHandler }]
-      )
+    const isValid = validateUserChoice(playerInput);
+    if (!isValid) {
+      Alert.alert('Invalid Number', 'must be number between 1 to 99', [
+        { text: 'Ok', style: 'destructive', onPress: resetHandler },
+      ]);
+    } else {
+      props.onConfirm(playerInput);
     }
-    console.log('value confirmed', playerInput);
   }
 
   return (
-    <View style={styles.start}>
-      <PrimaryInput onTyping={onTyping} inputTxt={playerInput} />
-      <View style={styles.btnContainer}>
-        <View style={styles.btn}>
+    <View style={styles.container}>
+      <Title>Guess my number</Title>
+      <Card>
+        <Text style={styles.instructionText}>Enter number from 1 to 99</Text>
+        <PrimaryInput onTyping={onTyping} inputTxt={playerInput} />
+        <View style={styles.btnContainer}>
           <PrimaryButton onPressing={resetHandler}>Clean</PrimaryButton>
-        </View>
-        <View style={styles.btn}>
           <PrimaryButton onPressing={onConfirming}>Confirm</PrimaryButton>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
 
 const usePreDefinedStyle = makeStyles((theme, props) => ({
-  start: {
+  container: {
+    flex: 1,
     marginTop: 100,
     marginHorizontal: 16,
-    padding: 16,
-    backgroundColor: theme.colors.secondary,
-    borderRadius: 6,
-
-    elevation: 8, //only android,
-
-    shadowColor: theme.colors.black,
-    shadowOffset: { width: 2, height: 4 },
-    shadowOpacity: 0.4,
-    shadowRadius: 4,
   },
   btnContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  btn: {
-    flex: 1,
-    marginHorizontal: 6,
+  instructionText: {
+    fontSize: 22,
+    color: theme.colors.primary,
   },
 }));
 
