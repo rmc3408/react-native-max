@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1/1,  
   },
   numberText: {
-    fontSize: '62.5%',
+    fontSize: 72,
     fontWeight: 'bold',
     color: 'white',
     alignSelf: 'center',

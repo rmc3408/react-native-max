@@ -6,7 +6,7 @@ import PrimartBtn from '../components/PrimaryBtn';
 const GameOver = (props) => {
   return (
     <View style={styles.screen}>
-      <Title style={styles.title}>END</Title>
+      <Title styled={styles.title}>Ending</Title>
       <View style={styles.imageContainer}>
         <Image
           source={require('../assets/success.png')}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   highlight: {
-    fontFamily: 'Arial',
-    fontWeight: '600',
+    fontFamily: 'monospace',
+    fontWeight: '800',
   },
 });
