@@ -43,7 +43,7 @@ export default function App() {
   }
 
   let screen = <Start onConfirm={startGame} />;
-  if (gameOver && useNumber)
+  if (gameOver && useNumber && guessRounds > 0)
     screen = (
       <GameOver
         rounds={guessRounds}
