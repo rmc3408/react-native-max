@@ -1,7 +1,9 @@
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, Dimensions } from 'react-native';
 import React from 'react';
 import Title from '../components/Title';
 import PrimartBtn from '../components/PrimaryBtn';
+
+const deviceW = Dimensions.get('window').width;
 
 const GameOver = (props) => {
   return (
@@ -40,9 +42,9 @@ const styles = StyleSheet.create({
     letterSpacing: 8,
   },
   imageContainer: {
-    width: 300,
-    height: 300,
-    borderRadius: 150,
+    width: deviceW > 390 ? 300 : 240,
+    height: deviceW > 390 ? 300 : 240,
+    borderRadius: deviceW > 390 ? 150 : 120,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',
@@ -59,7 +61,6 @@ const styles = StyleSheet.create({
     marginVertical: 24,
   },
   highlight: {
-    fontFamily: 'monospace',
     fontWeight: '800',
   },
 });

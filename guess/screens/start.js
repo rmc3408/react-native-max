@@ -55,8 +55,8 @@ const Start = (props) => {
 const usePreDefinedStyle = makeStyles((theme, props) => ({
   container: {
     flex: 1,
-    marginTop: 100,
     marginHorizontal: 16,
+    alignItems: 'center',
   },
   btnContainer: {
     flexDirection: 'row',

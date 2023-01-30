@@ -28,6 +28,8 @@ const usePreDefinedStyle = makeStyles((theme, props) => {
       borderWidth: props.chosen > 50 ? 6 : 2,
       padding: 12,
       fontFamily: 'open-sans-bold',
+      maxWidth: '80%',
+      width: 300,
     },
   };
 });

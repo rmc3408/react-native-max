@@ -1,5 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import React from 'react';
+
+const deviceH = Dimensions.get('window').height;
 
 const Guess = (props) => {
   return (
@@ -16,8 +18,8 @@ export default Guess;
 const styles = StyleSheet.create({
   screen: {
     //flex: 2/4,
-    height: 200,
-    marginTop: 20,
+    height: deviceH > 800 ? 300 : 150,
+    marginTop: deviceH > 800 ? 30 : 20,
     justifyContent: 'center',
     alignItems: 'center',
   },

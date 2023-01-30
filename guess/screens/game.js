@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 20,
     paddingHorizontal: 12,
+    alignItems: 'center',
   },
   instructionText: {
     fontSize: 22,
