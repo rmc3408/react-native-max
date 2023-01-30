@@ -3,6 +3,7 @@
 **/dist
 
 .expo/
+.vscode/
 dist/
 npm-debug.*
 *.jks

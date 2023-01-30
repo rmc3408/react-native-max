@@ -27,7 +27,7 @@ Here's a detailed look at what you'll get:
 | Section 02 | React Native Basics | &check; | <br>
 | Section 03 | Debugging react native apps | &check; | <br>
 | Section 04 | Diving depper into components, Layouts & Styling - MiniGame app | &check; | <br>
-| Section 05 | Building adaptative User Interfaces - Platform & devices |  | <br>
+| Section 05 | Building adaptative User Interfaces - Platform & devices | &check; | <br>
 | Section 06 | React Native Navigation - Meals App |  | <br>
 | Section 07 | Redux & Context Api |  | <br>
 | Section 08 | Expenses Tracker App |  | <br>
