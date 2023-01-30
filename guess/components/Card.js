@@ -26,5 +26,6 @@ const usePreDefinedStyle = makeStyles((theme, props) => ({
     shadowOffset: { width: 2, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 4,
+    alignItems: 'center',
   },
 }));

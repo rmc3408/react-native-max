@@ -1,15 +1,28 @@
-import { StyleSheet, Image, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, Image, View, Text, useWindowDimensions } from 'react-native';
 import React from 'react';
 import Title from '../components/Title';
 import PrimartBtn from '../components/PrimaryBtn';
 
-const deviceW = Dimensions.get('window').width;
+//const deviceW = Dimensions.get('window').width;
 
 const GameOver = (props) => {
+  const { width, height } = useWindowDimensions();
+
+  let imageSize = 300;
+  if (width < 390 || height < 500) {
+    imageSize = 100;
+  }
+
+  const imgStyled = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  }
+
   return (
     <View style={styles.screen}>
       <Title styled={styles.title}>Ending</Title>
-      <View style={styles.imageContainer}>
+      <View style={[styles.imageContainer, imgStyled]}>
         <Image
           source={require('../assets/success.png')}
           alt="end"
@@ -42,9 +55,9 @@ const styles = StyleSheet.create({
     letterSpacing: 8,
   },
   imageContainer: {
-    width: deviceW > 390 ? 300 : 240,
-    height: deviceW > 390 ? 300 : 240,
-    borderRadius: deviceW > 390 ? 150 : 120,
+    // width: deviceW > 390 ? 300 : 240,
+    // height: deviceW > 390 ? 300 : 240,
+    // borderRadius: deviceW > 390 ? 150 : 120,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',

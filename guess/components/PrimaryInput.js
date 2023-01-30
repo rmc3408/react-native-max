@@ -19,9 +19,8 @@ const PrimaryInput = (props) => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    width: 54,
-    alignSelf: 'center',
-    marginTop: 42,
+    width: 64,
+    marginTop: 32,
   },
   inputData: {
     fontSize: 42,

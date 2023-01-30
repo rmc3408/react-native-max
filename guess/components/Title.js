@@ -1,6 +1,6 @@
 import { makeStyles } from '@rneui/themed';
 import { useContext } from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import { NumberCtx } from '../context/NumContext';
 
 const Title = (props) => {
@@ -20,12 +20,12 @@ const usePreDefinedStyle = makeStyles((theme, props) => {
   // console.log(props, theme)
   return {
     title: {
-      color: theme.colors.primary,
+      color: Platform.select({ ios: theme.colors.secondary, android: theme.colors.primary }) ,
       fontSize: 24,
       fontWeight: 'bold',
       textAlign: 'center',
-      borderColor: theme.colors.primary,
-      borderWidth: props.chosen > 50 ? 6 : 2,
+      borderColor:  Platform.select({ ios: theme.colors.secondary, android: theme.colors.primary }),
+      borderWidth: Platform.OS === 'ios' && props.chosen > 50 ? 6 : 2,
       padding: 12,
       fontFamily: 'open-sans-bold',
       maxWidth: '80%',
