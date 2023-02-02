@@ -6,7 +6,7 @@ const CategoriesItem = ({ id, title, color, navigationProps }) => {
   };
 
   function onPressCategory() {
-    navigationProps.navigate('MealsOverview', { categoryId: id });
+    navigationProps.navigate('MealsOverview', { categoryId: id, categoryTitle: title });
   }
 
   function categoriesPressed({pressed}) {
@@ -28,10 +28,10 @@ export default CategoriesItem
 
 const styles = StyleSheet.create({
   card: {
-    width: 180,
-    height: 180,
+    width: '45%',
+    height: 150,
     borderRadius: 8,
-    margin: 16,
+    margin: 8,
     overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
   },
   shadowProp: {

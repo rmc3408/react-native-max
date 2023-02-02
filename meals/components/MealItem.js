@@ -1,11 +1,18 @@
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const MealItem = ({ meal }) => {
+  const nav = useNavigation();
+
+  function mealSelected() {
+    nav.navigate('MealDetails', { meal });
+  }
+
   return (
     <View style={styles.mealItem}>
-      <Pressable>
+      <Pressable onPress={mealSelected} >
         <View>
-          <Image source={{ uri: meal.imageUrl}} alt={meal.id} style={styles.image} height={300} />
+          <Image source={{ uri: meal.imageUrl}} alt={meal.id} style={styles.image} />
           <Text style={styles.title}>{meal.title}</Text>
         </View>
         <View style={styles.details}>
@@ -29,6 +36,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
+    height: 200,
   },
   title: {
     fontSize: 18,
