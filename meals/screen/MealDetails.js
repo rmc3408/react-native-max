@@ -1,19 +1,23 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState, useContext } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import IconBtn from '../components/IconBtn';
+import { FavoriteContext } from '../store/context/context';
 
 const MealDetails = ({ route, navigation }) => {
-  const [savedFavorite, setSavedFavorite] = useState(false);
-  const { id, title, duration, affordability, complexibility, imageUrl, ingredients, steps } = route.params.meal;
-
+  const { id, title, imageUrl, ingredients, steps } = route.params.meal;
+  const context = useContext(FavoriteContext);
+  const isMealFavorited = context.ids.includes(id)
+  const [savedFavorite, setSavedFavorite] = useState(isMealFavorited);
+  
   function headerFavoriteToggle(e) {
     setSavedFavorite(!savedFavorite);
+    !savedFavorite ? context.addFavorite(id) : context.removeFavorite(id)
   }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <IconBtn name="star" size={24} color={savedFavorite ? 'red' : 'white'} iconPress={headerFavoriteToggle}>
+        <IconBtn name={savedFavorite ? 'star' : "star-outline"} size={24} color='white' iconPress={headerFavoriteToggle}>
           star
         </IconBtn>
       ),

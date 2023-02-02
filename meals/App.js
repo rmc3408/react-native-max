@@ -8,6 +8,7 @@ import Categories from './screen/Categories';
 import MealsScreen from './screen/Meals';
 import MealDetails from './screen/MealDetails';
 import Favorites from './screen/Favorites';
+import FavoriteContextProvider from './store/context/context';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -50,13 +51,15 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={headerAllScreenStyled}>
-          <Stack.Screen name="MealsCategories" component={DrawerHookNav} options={{ headerShown: false }} />
-          <Stack.Screen name="MealsOverview" component={MealsScreen} />
-          <Stack.Screen name="MealDetails" component={MealDetails} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <FavoriteContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={headerAllScreenStyled}>
+            <Stack.Screen name="MealsCategories" component={DrawerHookNav} options={{ headerShown: false }} />
+            <Stack.Screen name="MealsOverview" component={MealsScreen} />
+            <Stack.Screen name="MealDetails" component={MealDetails} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoriteContextProvider>
     </>
   );
 }
