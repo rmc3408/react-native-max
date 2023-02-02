@@ -1,48 +1,61 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Button } from 'react-native';
-import Categories from './screen/Categories';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Ionicons } from '@expo/vector-icons';
+import Categories from './screen/Categories';
 import MealsScreen from './screen/Meals';
 import MealDetails from './screen/MealDetails';
+import Favorites from './screen/Favorites';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const headerAllScreenStyled = {
-  headerStyle: {
-    backgroundColor: '#3f2f25',
-  },
+  headerStyle: { backgroundColor: '#3f2f25' },
   headerTintColor: '#fff', //color of header title
-  headerTitleStyle: {
-    fontWeight: 'bold',
-  },
-  contentStyle: {
-    backgroundColor: '#3f2f25',
-  },
+  headerTitleStyle: { fontWeight: 'bold' },
+  sceneContainerStyle: { backgroundColor: '#3f2f25' },
+  contentStyle: { backgroundColor: '#3f2f25' },
+  drawerContentStyle: { backgroundColor: '#351401' },
+  drawerInactiveTintColor: 'white',
+  drawerActiveTintColor: '#351401',
+  drawerActiveBackgroundColor: '#E4BAA1',
 };
+
+function DrawerHookNav() {
+  return (
+    <Drawer.Navigator screenOptions={headerAllScreenStyled}>
+      <Drawer.Screen
+        name="Categories"
+        component={Categories}
+        options={{
+          title: 'All Categories',
+          drawerIcon: ({ color, size }) => <Ionicons name="list" color={color} size={size} />,
+        }}
+      />
+      <Drawer.Screen
+        name="Favorites"
+        component={Favorites}
+        options={{
+          drawerIcon: ({ color, size }) => <Ionicons name="star" color={color} size={size} />,
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>      
-          <Stack.Navigator screenOptions={headerAllScreenStyled}>
-            <Stack.Screen
-              name="MealsCategories"
-              component={Categories}
-              options={{
-                title: 'All Categories',
-              }}
-            />
-            <Stack.Screen name="MealsOverview" component={MealsScreen} />
-            <Stack.Screen
-              name="MealDetails"
-              component={MealDetails}
-              // options={{ headerRight: () => <Text style={{color: 'white'}}>star</Text>}}
-            />
-          </Stack.Navigator>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={headerAllScreenStyled}>
+          <Stack.Screen name="MealsCategories" component={DrawerHookNav} options={{ headerShown: false }} />
+          <Stack.Screen name="MealsOverview" component={MealsScreen} />
+          <Stack.Screen name="MealDetails" component={MealDetails} />
+        </Stack.Navigator>
       </NavigationContainer>
     </>
   );

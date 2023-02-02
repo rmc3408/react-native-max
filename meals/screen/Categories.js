@@ -3,7 +3,7 @@ import CategoriesItem from '../components/CategoriesItem';
 import { CATEGORIES } from '../data/dummy-data';
 
 function renderCategoriesItem(obj, nav) {
-  return <CategoriesItem id={obj.item.id} title={obj.item.title} color={obj.item.color} navigationProps={nav} />
+  return <CategoriesItem id={obj.item.id} title={obj.item.title} color={obj.item.color} navigationProps={nav} />;
 }
 
 const Categories = (props) => {
@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: 'center',
-  }
+  },
 });
