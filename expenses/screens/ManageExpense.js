@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native';
+import CreateExpense from '../components/createExpense';
+import EditExpense from '../components/EditExpense';
 
-const ManageExpense = () => {
-  return (
-    <View style={styles.container}>
-      <Text>ManageExpense</Text>
-    </View>
-  )
-}
+const ManageExpense = (props) => {
+  const { id } = props.route.params;
 
-export default ManageExpense
+  if (!id) return <CreateExpense />;
+
+  return <EditExpense {...props.route.params} />;
+};
+
+export default ManageExpense;
 
 const styles = StyleSheet.create({
   container: {
@@ -17,4 +19,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-})
+});

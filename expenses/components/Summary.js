@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   period: {
-    fontSize: 12,
+    fontSize: 16,
     color: colors.primary500,
   },
   sum: {
