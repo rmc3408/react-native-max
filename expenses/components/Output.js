@@ -19,12 +19,11 @@ export default Output;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 12,
     paddingBottom: 0,
-    backgroundColor: colors.primary700,
+    //backgroundColor: colors.primary700,
   },
   content: {
     flex: 1,
-    //paddingHorizontal: 24,
+    paddingHorizontal: 12,
   },
 });

@@ -1,12 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ExpensesContext } from '../store/context';
 import colors from '../styles/colors';
+import ExpenseForm from './ExpenseForm';
 import { IconButton } from './IconButton';
 
 function EditExpense(props) {
-  const { id, description, amount, createdAt } = props;
+  const { id } = props;
   const nav = useNavigation();
   const ctx = useContext(ExpensesContext);
 
@@ -15,24 +16,11 @@ function EditExpense(props) {
     nav.goBack();
   }
 
-  function cancelHandler() {
-    nav.goBack();
-  }
-
-  function updateHandler() {
-    ctx.updateExpense(id, { description: 'FuckWater', amount: 50, createdAt: new Date() })
-    nav.goBack();
-  }
-
-
   return (
     <View style={styles.container}>
-      <View style={styles.btnGroup}>
-        <IconButton iconName="thumbs-up-outline" size={36} color={colors.primary100} onPress={updateHandler} />
-        <IconButton iconName="thumbs-down-outline" size={36} color={colors.primary100} onPress={cancelHandler} />
-      </View>
+      <ExpenseForm id={id} />
       <View style={styles.deleteContainer}>
-        <IconButton iconName="trash" size={36} color={colors.error500} onPress={deleteExpenseHandler} />
+        <IconButton iconName="trash" size={48} color={colors.error500} onPress={deleteExpenseHandler} />
       </View>
     </View>
   );
