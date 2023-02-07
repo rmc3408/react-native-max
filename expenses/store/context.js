@@ -4,6 +4,7 @@ import { dummyData } from './data';
 export const ExpensesContext = createContext({
   expenses: [],
   addExpense: ({ description, amount, date }) => {},
+  setExpenses: (expenses) => {},
   deleteExpense: (id) => {},
   updateExpense: (id, { description, amount, date }) => {},
 });
@@ -11,8 +12,10 @@ export const ExpensesContext = createContext({
 function reducersExpenses(state, action) {
   switch (action.type) {
     case 'ADD':
-      const newID = Math.random().toFixed(8);
-      return [...state, { id: newID, ...action.payload }];
+      //const newID = Math.random().toFixed(8);
+      return [...state, action.payload ];
+    case 'SET':
+      return [...action.payload];
     case 'UPDATE':
       const updatableIndexItem = state.findIndex((expense) => expense.id === action.payload.id);
       const updatableItem = state[updatableIndexItem];
@@ -29,7 +32,7 @@ function reducersExpenses(state, action) {
 }
 
 function ExpenseCtxProvider({ children }) {
-  const [expensesState, dispatch] = useReducer(reducersExpenses, dummyData);
+  const [expensesState, dispatch] = useReducer(reducersExpenses, []);
 
   function addExpense(data) {
     dispatch({ type: 'ADD', payload: data });
@@ -39,6 +42,10 @@ function ExpenseCtxProvider({ children }) {
     dispatch({ type: 'DELETE', payload: id });
   }
 
+  function setExpenses(data) {
+    dispatch({ type: 'SET', payload: data });
+  }
+
   function updateExpense(id, data) {
     dispatch({ type: 'UPDATE', payload: { id, data } });
   }
@@ -46,6 +53,7 @@ function ExpenseCtxProvider({ children }) {
   const valueContext = {
     expenses: expensesState,
     addExpense,
+    setExpenses,
     deleteExpense,
     updateExpense,
   };
