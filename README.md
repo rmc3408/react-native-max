@@ -30,14 +30,14 @@ Here's a detailed look at what you'll get:
 | Section 05 | Building adaptative User Interfaces - Platform & devices | &check; | <br>
 | Section 06 | React Native Navigation - Meals App | &check; | <br>
 | Section 07 | Redux & Context Api | &check; | <br>
-| Section 08 | Expenses Tracker App |  | <br>
-| Section 09 | Handling User Input |  |<br>
-| Section 10 | Sending Http Requests |  |<br>
+| Section 08 | Expenses Tracker App | &check; | <br>
+| Section 09 | Handling User Input | &check; |<br>
+| Section 10 | Sending Http Requests | &check; |<br>
 | Section 11 | User Authentication |  |<br>
 | Section 12 | Using Native Device Features |  |<br>
 | Section 13 | Builiding RN apps without Expo |  | <br>
 | Section 14 | Publishing RN apps |  | <br>
 | Section 15 | Push Notifications |  | <br>
-| Section 16 | Course Roundup |  | <br>
-| Section 17 | Bonus: Javascript refresher |  | <br>
-| Section 18 | Bonus: React refresher |  | <br>
+| Section 16 | Course Roundup | &check; | <br>
+| Section 17 | Bonus: Javascript refresher | &check; | <br>
+| Section 18 | Bonus: React refresher | &check; | <br>
