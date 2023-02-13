@@ -5,6 +5,7 @@ import Colors from './ui/colors';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllPlaces from './screens/AllPlaces';
 import AddPlaces from './screens/AddPlace';
+import Map from './screens/Map';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,7 @@ export default function App() {
             })}
           />
           <Stack.Screen name="addPlaces" component={AddPlaces} />
+          <Stack.Screen name="map" component={Map} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

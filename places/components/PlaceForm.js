@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import colors from '../ui/colors';
 import CameraPicker from '../utils/camera';
+import LocationPicker from '../utils/location';
 
 const PlaceForm = () => {
   const [ titleTxt, setTitleTxt ] = useState('');
@@ -11,6 +12,7 @@ const PlaceForm = () => {
         <Text style={styles.label}>ADD PLACE - {titleTxt} </Text>
         <TextInput style={styles.input} onChangeText={(value) => setTitleTxt(value)}/>
         <CameraPicker />
+        <LocationPicker />
       </View>
     </ScrollView>
   );
@@ -29,7 +31,6 @@ const styles = StyleSheet.create({
     color: colors.primary500
   },
   input: {
-    marginHorizontal: 4,
     marginVertical: 8,
     paddingVertical: 8,
     paddingHorizontal: 4,
