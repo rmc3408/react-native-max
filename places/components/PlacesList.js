@@ -8,12 +8,15 @@ const PlacesList = ({ places }) => {
     return <PlacesItem onSelect={() => {}} {...item} />;
   }
 
-  if (!places || places.length === 0)
+  if (!places || places.length === 0) {
     return (
       <View style={styles.fallbackContainer}>
         <Text style={styles.fallbackText}>No places available</Text>
       </View>
     );
+  }
+  console.log(places)
+    
   return <FlatList data={places} keyExtractor={(item) => item.id} renderItem={renderPlaceDetails} />;
 };
 

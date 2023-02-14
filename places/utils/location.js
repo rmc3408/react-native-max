@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import colors from '../ui/colors';
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
-import { getMapPreview } from './map';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { getGeoCodingReverse, getMapPreview } from './map';
+import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 
-const LocationPicker = () => {
-  const [location, setLocation] = useState({ lat: '', lgn: '' });
+const LocationPicker = ({ onPickLocation }) => {
+  const [location, setLocation] = useState({ lat: null, lgn: null });
   const nav = useNavigation();
   const route = useRoute();
+  const focus = useIsFocused();
 
   async function getPermission() {
     const { status } = await requestForegroundPermissionsAsync();
@@ -24,8 +25,6 @@ const LocationPicker = () => {
     if (!hasPermission) return;
 
     const where = await getCurrentPositionAsync({});
-    //console.log(where)
-    //console.log(getMapPreview(where.coords.latitude, where.coords.longitude))
 
     setLocation({ lat: where.coords.latitude, lgn: where.coords.longitude });
   }
@@ -35,16 +34,26 @@ const LocationPicker = () => {
   }
 
   let mapLocationPreview = <Text>No location found</Text>;
+  
 
-  if (location.lat !== '') {
+  useEffect(() => {
+    if(route.params && focus) {
+      setLocation({ lat: route.params.latitude, lgn: route.params.longitude })
+    }
+  }, [route, focus])
+
+  useEffect(() => {
+    async function getAddy() {
+      const addy = await getGeoCodingReverse(location.lat, location.lgn);
+      onPickLocation({ ...location, address: addy})
+    }
+    getAddy()
+  }, [location]);
+
+  if(location.lat) {
     mapLocationPreview = <Image source={{ uri: getMapPreview(location.lat, location.lgn) }} style={styles.mapImage} />;
   }
-  if (route.params?.latitude) {
-    mapLocationPreview = (
-      <Image source={{ uri: getMapPreview(route.params.latitude, route.params.longitude) }} style={styles.mapImage} />
-    );
-  }
-  
+
   return (
     <View>
       <View style={styles.locationPreview}>{mapLocationPreview}</View>
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 300,
+    height: 200,
     marginVerical: 8,
     backgroundColor: colors.primary100,
     borderRadius: 6,

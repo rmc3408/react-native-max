@@ -3,7 +3,7 @@ import { Button, Image, View, Text, StyleSheet } from 'react-native';
 import { useCameraPermissions, PermissionStatus, launchCameraAsync, MediaTypeOptions } from 'expo-image-picker';
 import colors from '../ui/colors';
 
-export default function CameraPicker() {
+export default function CameraPicker({ onPickImage }) {
   const [image, setImage] = useState(null);
   const [status, reqPermissionFunction] = useCameraPermissions();
   let imagePreview = <Text>No image at moment</Text>;
@@ -43,9 +43,11 @@ export default function CameraPicker() {
 
     if (!camPickResult.canceled) {
       setImage(camPickResult.assets[0].uri);
-      imagePreview = <Image source={{ uri: image }} style={styles.image} />;
+      onPickImage(camPickResult.assets[0].uri)
     }
   }
+
+  if(image) imagePreview = <Image source={{ uri: image }} style={styles.image} />;
 
   return (
     <>
@@ -62,7 +64,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: 200,
-    marginBottom: 16,
     backgroundColor: colors.primary100,
     borderRadius: 6,
   },
