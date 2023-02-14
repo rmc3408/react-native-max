@@ -4,18 +4,20 @@ import colors from '../ui/colors';
 import CameraPicker from '../utils/camera';
 import LocationPicker from '../utils/location';
 import Place from '../models/place';
+import { insertPlace } from '../utils/database';
 
 const PlaceForm = ({ onCreatePlace }) => {
   const [titleTxt, setTitleTxt] = useState('');
   const [getImage, setGetImage] = useState();
   const [getLocationPick, setGetLocationPick] = useState();
 
-  function saveData() {
+  async function saveData() {
     const newPlace = new Place(titleTxt, getImage, getLocationPick.address, {
       latitude: getLocationPick.lat,
       longitude: getLocationPick.lgn,
     });
-    onCreatePlace(newPlace);
+    await insertPlace(newPlace);
+    onCreatePlace();
   }
 
   const locationHandler = useCallback((value) => {

@@ -33,8 +33,8 @@ Here's a detailed look at what you'll get:
 | Section 08 | Expenses Tracker App | &check; | <br>
 | Section 09 | Handling User Input | &check; |<br>
 | Section 10 | Sending Http Requests | &check; |<br>
-| Section 11 | User Authentication |  |<br>
-| Section 12 | Using Native Device Features |  |<br>
+| Section 11 | User Authentication | &check; |<br>
+| Section 12 | Using Native Device Features | &check; |<br>
 | Section 13 | Builiding RN apps without Expo |  | <br>
 | Section 14 | Publishing RN apps |  | <br>
 | Section 15 | Push Notifications |  | <br>

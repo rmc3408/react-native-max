@@ -5,7 +5,7 @@ export default class Place {
     this.title = title;
     this.imageUrl = imageUrl;
     this.address = address;
-    this.location = location;
+    this.location = { latitude: location.latitude, longitude: location.longitude };
     this.id = uuid.v4();
   }
 }
