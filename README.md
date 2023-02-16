@@ -35,7 +35,7 @@ Here's a detailed look at what you'll get:
 | Section 10 | Sending Http Requests | &check; |<br>
 | Section 11 | User Authentication | &check; |<br>
 | Section 12 | Using Native Device Features | &check; |<br>
-| Section 13 | Builiding RN apps without Expo |  | <br>
+| Section 13 | Builiding RN apps without Expo | &check; | <br>
 | Section 14 | Publishing RN apps |  | <br>
 | Section 15 | Push Notifications |  | <br>
 | Section 16 | Course Roundup | &check; | <br>
