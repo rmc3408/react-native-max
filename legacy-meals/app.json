@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "meals",
+    "name": "My Recipe Meals",
+    "owner": "rmc3408",
     "slug": "meals",
-    "version": "1.0.0",
+    "version": "0.1.12",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,16 +18,25 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "0.1.12",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rmc3408.meals"
     },
     "android": {
+      "versionCode": 12,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rmc3408.meals"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c3420d4e-6030-40d0-abe9-aeb63e2b9157"
+      }
     }
   }
 }
