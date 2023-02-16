@@ -1,4 +1,4 @@
-const GOOGLE_API_KEY = 'AIzaSyCgmjkOqO-p8-kA2-KZKlQmSOfg7TQhni8';
+const GOOGLE_API_KEY = 'GET_ON_WEBSITE';
 
 export function getMapPreview(lat, lgn) {
   const imageAPI_Url = 'https://maps.googleapis.com/maps/api/staticmap?center=' 
