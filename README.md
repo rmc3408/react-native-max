@@ -36,8 +36,8 @@ Here's a detailed look at what you'll get:
 | Section 11 | User Authentication | &check; |<br>
 | Section 12 | Using Native Device Features | &check; |<br>
 | Section 13 | Builiding RN apps without Expo | &check; | <br>
-| Section 14 | Publishing RN apps |  | <br>
-| Section 15 | Push Notifications |  | <br>
+| Section 14 | Publishing RN apps | &check; | <br>
+| Section 15 | Push Notifications | &check; | <br>
 | Section 16 | Course Roundup | &check; | <br>
 | Section 17 | Bonus: Javascript refresher | &check; | <br>
 | Section 18 | Bonus: React refresher | &check; | <br>
